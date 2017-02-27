@@ -1,0 +1,380 @@
+html, body, #container {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    font-family: "微软雅黑", Arial, Helvetica;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif, PingFang SC, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+}
+
+#container {
+[ position: relative;
+]
+}
+
+#container h2 {
+    font-size: 2.3rem;
+    color: #F55123;
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding-top: 40px;
+}
+
+#container h4 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #000;
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+}
+
+#container .logo {
+    width: 80%;
+    margin: 20px 10%;
+}
+
+#container .logo img {
+    width: 100%;
+}
+
+#container .logo_head {
+    width: 80%;
+    height: 150px;
+    margin: 20px 10%;
+    position: relative;
+}
+
+#container .logo_head .l_img {
+    width: 100%;
+    height: 80%;
+}
+
+#container .logo_head .head {
+    width: 105px;
+    height: 106px;
+    border-radius: 63px;
+    position: absolute;
+}
+
+#container .logo_head p {
+    position: absolute;
+    right: 15%;
+    bottom: 0;
+    font-size: 16px;
+}
+
+#container table {
+    width: 80%;
+    margin: 0 10%;
+    border-collapse: collapse;
+}
+
+#container table tr {
+    width: 100%;
+    height: 50px;
+}
+
+#container table tr td:first-child {
+    line-height: 38px;
+    font-size: 16px;
+    text-align: right;
+}
+
+#container table tr td:last-child {
+    padding-left: 10px;
+}
+
+#container table tr td input {
+    width: 180px;
+    height: 38px;
+    border: 1px solid #CACACA;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 38px;
+    padding-left: 10px;
+}
+
+#container .vote_count {
+    width: 80%;
+    height: 50px;
+    background: #fff;
+    border: 1px solid #CACACA;
+    border-radius: 6px;
+    margin: 0 10%;
+}
+
+#container .vote_count p {
+    width: 80%;
+    margin: 0 10%;
+    line-height: 50px;
+    font-size: 14px;
+}
+
+#container .vote_count p span {
+    color: #C31E1E;
+    font-weight: bolder;
+}
+
+#container .vote_text {
+    width: 70%;
+    background: #fff;
+    border: 1px solid #CACACA;
+    border-radius: 6px;
+    margin: 20px 10%;
+    padding: 5%;
+}
+
+#container .vote_text h3 {
+    font-size: 14px;
+    color: #AF9577;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+#container .vote_text p {
+    color: #AF9577;
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+/*#container .btn{width: 80%;height: 50px;background: #FAC300;border-radius: 8px;font-size: 22px;color: #fff;text-align: center;line-height: 50px;margin:20px 10%;}*/
+#container .btn {
+    width: 80%;
+    margin: 20px 10%;
+}
+
+#container .btn img {
+    width: 100%;
+}
+
+#container .a_href {
+    margin: 0 auto 30px auto;
+    width: 150px;
+    text-align: center;
+}
+
+#container .a_href a {
+    font-size: 16px;
+    color: #B68B69;
+    text-decoration: underline;
+}
+
+#container .special_version h3 {
+    width: 90%;
+    margin: 0 5%;
+    text-align: center;
+    font-size: 15px;
+    color: #ACA28C;
+}
+
+#container .special_version h3 span:first-child {
+    width: 35%;
+    height: 1px;
+    background: #979797;
+    display: inline-block;
+    float: left;
+    margin-top: 10px;
+}
+
+#container .special_version h3 span:last-child {
+    width: 35%;
+    height: 1px;
+    background: #979797;
+    display: inline-block;
+    float: right;
+    margin-top: 10px;
+}
+
+#container .special_version ul {
+    width: 90%;
+    margin: 10px 5%;
+}
+
+#container .special_version ul li {
+    color: #ABA08A;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+#container dl {
+    width: 68px;
+    margin: 0 auto;
+    padding: 10% 0;
+}
+
+#container dl dt {
+    width: 68px;
+    margin-bottom: 10px;
+}
+
+#container dl dt img {
+    width: 30px;
+    height: 30px;
+    margin-left: 19px;
+}
+
+#container dl dd {
+    width: 68px;
+    text-align: center;
+    font-size: 17px;
+    color: #8BCE42;
+}
+
+#container .s_text {
+    width: 70%;
+    margin: 0 15%;
+}
+
+#container .s_text h3 {
+    text-align: center;
+    font-size: 28px;
+    color: #D83535;
+}
+
+#container .s_text h5 {
+    text-align: center;
+    font-size: 17px;
+    color: #D83535;
+    padding-bottom: 10px;
+}
+
+#container .s_phone {
+    width: 70%;
+    height: 50px;
+    background: #fff;
+    border: 1px solid #CACACA;
+    margin: 20px 15%;
+    border-radius: 6px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+#container .s_btn {
+    width: 70%;
+    margin: 10px 15%;
+}
+
+#container .s_btn img {
+    width: 100%;
+}
+
+#container .f_btn {
+    width: 70%;
+    margin: 30px 15%;
+}
+
+#container .f_btn img {
+    width: 100%;
+}
+
+#container .foot_text {
+    width: 100%;
+    text-align: center;
+    color: #BEB29F;
+    font-size: 14px;
+    position: absolute;
+    bottom: 10%;
+}
+
+#container .mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+#container .mask img {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen  and (min-width: 319px) and (max-width: 374px) {
+    #container .vote_count p {
+        width: 80%;
+        margin: 0 10%;
+        line-height: 50px;
+        font-size: 12px;
+    }
+
+    #container .logo_head {
+        width: 90%;
+        height: 130px;
+        margin: 20px 5%;
+        position: relative;
+    }
+
+    #container .logo_head .head {
+        width: 100px;
+        height: 100px;
+        border-radius: 63px;
+        position: absolute;
+    }
+
+    #container .logo_head .head img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #container .s_text h5 {
+        text-align: center;
+        font-size: 16px;
+        color: #D83535;
+    }
+}
+
+.dialog {
+    position: absolute;
+    left: 50%;
+    margin-left: -30%;
+    bottom: 10%;
+    width: 60%;
+}
+
+.dialog .title {
+    width: 100%;
+    height: 30px;
+    background: rgba(0, 0, 0, .5);
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    line-height: 30px;
+}
+
+.common_about_us {
+    position: absolute;
+    width: 80%;
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 16px;
+    color: #333333;
+    font-family: "微软雅黑", Arial, Helvetica;
+}
+
+.common_help {
+    position: absolute;
+    width: 80%;
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 16px;
+    color: #333333;
+    font-family: "微软雅黑", Arial, Helvetica;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>就是笑话</title>
+
+    <link rel="stylesheet" href="../css/player.css" media="screen" type="text/css"/>
+    <script type="text/javascript" src="../js/common/zepto.min.js"></script>
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            // var audio = document.getElementById('audio').setAttribute('src', 'http://www.5ijoke.com/xiaohua/frontend/web/uploads/test.mp3');
+
+//            var canvas = document.getElementById('canvas');
+//
+//            if (canvas.getContext) {
+//                var ctx = canvas.getContext("2d");
+//                ctx.beginPath();
+//                ctx.strokeStyle = 'darkgreen';
+//                ctx.lineCap = 'round';
+//                ctx.lineWidth = 6;
+//                ctx.arc(160, 160, 150, 0, Math.PI, false);
+//                ctx.stroke();
+//            }
+//
+//            togglePlay();
+        }
+    </script>
+
+</head>
+
+<body>
+<div id="container">
+    <canvas id="canvas" width="320" height="320">对不起，你的浏览器不支持Canvas标签！</canvas>
+    <canvas id="progress" width="320" height="320"></canvas><!-- progress bar -->
+    <div id="player">
+        <audio id="audio" controls>
+            <!-- <audio id="audio" controls src="http://localhost:8080/HelloWorld/download/test1.amr"> -->
+
+            <!-- <source src="music.mp3" type="audio/mpeg" codecs="mp3"></source>		 -->
+            <!-- <source src="http://www.111ttt.com/up/up2103526948.html"> -->
+
+
+        </audio>
+
+
+        <div class="cover">
+            <div class="controls">
+                <div class="play_pause" id="play" title="Play" onClick="togglePlay()"><i>&#xe600;</i></div>
+                <div class="play_pause" id="replay" onclick="replayAudio()"><i>&#xe607;</i></div>
+                <div class="voice"><i>&#xe608;</i><input id="volume" name="volume" min="0" max="1" step="0.1"
+                                                         type="range" onChange="setVolume()"/></div>
+                <div id="times">00:00/00:00</div>
+            </div><!-- #controls -->
+            <div class="info">
+                <p class="download"><a href="#" target="_blank">App下载地址</a></p>
+            </div>
+        </div><!-- #cover -->
+    </div><!-- #player -->
+
+</div><!-- #container -->
+
+<script src="../js/common/common.js"></script>
+<script src="../js/player.js"></script>
+<script src="../js/audio.js"></script>
+
+</body>
+</html>
