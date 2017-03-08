@@ -14,8 +14,8 @@ body {
 .title {
 
     background: deepskyblue;
-    height: 96px;
-    line-height: 96px;
+    height: 48px;
+    line-height: 48px;
     width: 100%;
     text-align: left;
     padding-left: 64px;
@@ -26,11 +26,59 @@ body {
 .container {
 
     width: 90%;
-    height: 480px;
+    height: 240px;
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
     padding: 0;
     background: white;
     border-radius: 15px;;
+    padding: 12px;
+}
+
+.div-horizontal {
+
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+
+    /* Safari、Opera 以及 Chrome */
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+
+.div-vertical {
+
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-orient: vertical;
+
+    /* Safari、Opera 以及 Chrome */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.avatar {
+
+    width: 50px;
+    height: 50px;
+    border-radius: 45px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+
+.user-container {
+
+    width: auto;
+}
+
+.user-name {
+
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+
+.day-before {
+
+    text-align: right;
 }
