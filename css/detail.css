@@ -1,37 +1,217 @@
 @charset "utf-8";
 
 html {
-    /*font-size: 10 px*/
+    font-size: 100px;
+}
+
+@media (min-width: 320px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 360px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 400px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 640px) {
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
     width: 100%;
     height: 100%;
-    background: #BEB29F;
+    background: #ECECEC;
     margin: 0;
 }
 
 .title {
 
-    background: deepskyblue;
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+
+    /* Safari、Opera 以及 Chrome */
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+
+    background: #11B7AD;
     height: 48px;
     line-height: 48px;
+    width: auto;
+}
+
+#title_back {
+
+    width: 48px;
+    height: 48px;
+}
+
+.title_content {
+
+    display: -moz-box;
+    display: -webkit-box;
+    height: 48px;
+    line-height: 48px;
+    width: auto;
     text-align: left;
-    padding-left: 64px;
-    font-size: 32px;
+    vertical-align: middle;
+    font-size: 18px;
+    color: white;
+    padding-left: 24px;
+    position: relative;
+}
+
+#avatar {
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-right: 0.8rem;
+}
+
+#info_container {
+
+    width: 80%;
+}
+
+#name_container {
+
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+
+    /* Safari、Opera 以及 Chrome */
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+
+    width: 100%;
+    height: 25px;
+}
+
+#name {
+
+    -moz-box-orient: horizontal;
+    -webkit-box-orient: horizontal;
+    box-flex: 1;
+    height: 25px;
+}
+
+#data {
+
+    -moz-box-orient: horizontal;
+    -webkit-box-orient: horizontal;
+    box-flex: 1;
+    margin-top: 2px;
+    text-align: right;
+    width: 90%;
+    font-size: 12px;
+    height: 25px;
+}
+
+#play_num {
+
+    -moz-box-orient: horizontal;
+    -webkit-box-orient: horizontal;
+    height: 24px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 25px;
+    border-radius: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: 1px solid;
+    border-color: #BBBBBB;
+    color: #7B7B7D;
+}
+
+#speak_num {
+
+    -moz-box-orient: horizontal;
+    -webkit-box-orient: horizontal;
+    height: 24px;
+    margin-left: 20px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 25px;
+    border-radius: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: 1px solid;
+    border-color: #BBBBBB;
+    color: #7B7B7D;
 }
 
 .container {
 
-    width: 90%;
-    height: 240px;
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: 0;
+    width: auto;
+    height: auto;
+    margin-top: 4%;
+    padding: 4%;
     background: white;
-    border-radius: 15px;;
-    padding: 12px;
+}
+
+.content {
+
+    width: auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+#container_play {
+
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+
+    /* Safari、Opera 以及 Chrome */
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+
+    background: #eeeeee;
+    border-radius: 25px;
+    height: 46px;
+}
+
+#btn_play {
+
+    display: -moz-box;
+    display: -webkit-box;
+    flex: 10;
+    width: 38px;
+    height: 38px;
+    margin-left: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+#container_play_content {
+
+    display: -moz-box;
+    display: -webkit-box;
+    -moz-box-orient: horizontal;
+    -webkit-box-orient: horizontal;
+    width: auto;
+}
+
+#play_time {
+
+    display: -moz-box;
+    display: -webkit-box;
+    flex: 1;
+    text-align: right;
+    font-size: 14px;
+    color: #7b7b7d;
 }
 
 .div-horizontal {
@@ -54,29 +234,22 @@ body {
     /* Safari、Opera 以及 Chrome */
     display: -webkit-box;
     -webkit-box-orient: vertical;
-}
 
-.avatar {
-
-    width: 50px;
-    height: 50px;
-    border-radius: 45px;
-    margin-right: 12px;
-    margin-bottom: 12px;
+    width: auto;
 }
 
 .user-container {
 
-    /*width: auto;*/
+    width: auto;
 }
 
 .user-name {
 
-    /*margin-right: 12px;*/
-    /*margin-bottom: 12px;*/
+    margin-right: 12px;
+    margin-bottom: 12px;
 }
 
 .day-before {
 
-    /*text-align: right;*/
+    text-align: right;
 }
