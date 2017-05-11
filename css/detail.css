@@ -195,23 +195,34 @@ body {
     margin-bottom: 4px;
 }
 
+#play_audio {
+
+    width: 0px;
+    height: 0px;
+}
+
 #container_play_content {
 
     display: -moz-box;
     display: -webkit-box;
     -moz-box-orient: horizontal;
     -webkit-box-orient: horizontal;
-    width: auto;
+    width: 85%;
+}
+
+#play_wave {
+
+    width: 280px;
+    height: 46px;
 }
 
 #play_time {
 
-    display: -moz-box;
-    display: -webkit-box;
-    flex: 1;
-    text-align: right;
+    text-align: left;
     font-size: 14px;
     color: #7b7b7d;
+    height: 46px;
+    line-height: 46px;
 }
 
 .div-horizontal {
