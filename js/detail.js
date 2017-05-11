@@ -155,7 +155,9 @@ function doPlayWave() {
         throw new Error("您的浏览器不支持！");
     }
 
-    var analyser = audioContext.createAnalyser(), source = audioContext.createMediaElementSource(audio);
+    var analyser = audioContext.createAnalyser();
+    var source = audioContext.createMediaElementSource(audio);
+
     source.connect(analyser);//截取音频信号
     analyser.connect(audioContext.destination);//声音连接到扬声器
 
@@ -176,49 +178,46 @@ function doPlayWave() {
 
     function drawColumn() {
 
-        var gradient, lineHeight,
-            start = 3,//从X轴何处坐标开始画
-            lineWidth = 3,//柱体宽度
-            lineGap = 3,//柱体间距
-            dataGap = 5;//每隔多少取一个数据用于绘画，意抽取片段数据来反映整体频谱规律
+        var lineHeight;
+        var start = 3;//从X轴何处坐标开始画
+        var lineWidth = 3;//柱体宽度
+        var lineGap = 3;//柱体间距
+        var dataGap = 5;//每隔多少取一个数据用于绘画，意抽取片段数据来反映整体频谱规律
         var count = parseInt((width - start * 2) / (lineWidth + lineGap));
-        var thisCap, drawX;
+        var thisCap;
+        var drawX;
 
         return function (data) {
 
             initPlayWave();
 
             for (var i = 0; i < count; i++) {
+
                 thisCap = data[start + i * dataGap];
                 //lineHeight = parseInt(height - (thisCap + thisCap * 0.8));
                 lineHeight = parseInt((height - thisCap + thisCap * 0.5));
                 context.lineWidth = lineWidth;
                 drawX = start + (lineWidth + lineGap) * i;
-                gradient = context.createLinearGradient(drawX, height, drawX, lineHeight);
-                gradient.addColorStop(1, 'rgba(255,0,0,.5)');
-
-                var gradient2 = context.createLinearGradient(drawX, height, drawX, lineHeight);
-                gradient2.addColorStop(1, 'rgba(255,0,0,.5)');
 
                 /*画频谱柱条*/
                 context.beginPath();
                 context.strokeStyle = "#11B7AD";
                 context.moveTo(drawX, height / 2);
                 context.lineTo(drawX, lineHeight / 2);
-                context.stroke();
+                //context.stroke();
 
 
-                context.beginPath();
-                context.strokeStyle = "#11B7AD";
+                // context.beginPath();
+                // context.strokeStyle = "#11B7AD";
                 context.moveTo(drawX, height / 2);
                 context.lineTo(drawX, height / 2 + height / 2 - lineHeight / 2);
                 context.stroke();
-                context.closePath();
             }
         }
     }
 
-    var drawColumns, timer;
+    var drawColumns;
+    var timer;
 
     function init() {
         drawColumns = drawColumn();

@@ -108,14 +108,12 @@ body {
     height: 25px;
 }
 
-#data {
+#date {
 
-    -moz-box-orient: horizontal;
-    -webkit-box-orient: horizontal;
+    width: 80%;
     box-flex: 1;
     margin-top: 2px;
     text-align: right;
-    width: 90%;
     font-size: 12px;
     height: 25px;
 }
@@ -127,7 +125,7 @@ body {
     height: 24px;
     font-size: 14px;
     text-align: left;
-    line-height: 25px;
+    line-height: 24px;
     border-radius: 15px;
     padding-left: 12px;
     padding-right: 12px;
@@ -144,7 +142,7 @@ body {
     margin-left: 12px;
     font-size: 14px;
     text-align: left;
-    line-height: 25px;
+    line-height: 24px;
     border-radius: 15px;
     padding-left: 12px;
     padding-right: 12px;
@@ -181,6 +179,7 @@ body {
 
     background: #eeeeee;
     border-radius: 25px;
+    margin-top: 4%;
     height: 46px;
 }
 
