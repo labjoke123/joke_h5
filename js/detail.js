@@ -32,12 +32,14 @@ $(function () {
 
                     // var play_url = "http://www.5ijoke.com/xiaohua/frontend/web/uploads/test.mp3";
 
+                    console.log(result);
+
+                    var data = result.data;
+
                     if (data != null) {
 
                         setDetail(data);
                     }
-
-                    console.log(result);
                 }
             },
 
@@ -61,23 +63,26 @@ function setDetail(data) {
 
     var avatar = data.portrait;
     var name = data.userName;
-    var createTime = data.createTime;
+    var createTime = data.createTime * 1000;
     var playNum = data.playNum;
     var speakNum = data.speakNum;
     var content = data.textContent;
     var url = data.audioUrl;
 
+    console.log("avatar:" + avatar);
+    console.log("content:" + content);
+
     var audioUrl = "http://www.5ijoke.com:80/xiaohua/frontend/web/" + url;
 
-    console.log(audioUrl);
+    console.log("url:" + audioUrl);
 
     document.getElementById("avatar").setAttribute("src", avatar);
     $('#name').html(name);
     $('#data').html(timeago(createTime));
-    $('#play_num').html(playNum);
-    $('#speak_num').html(speakNum);
+    $('#play_num').html("播放" + playNum);
+    $('#speak_num').html("讲过" + speakNum);
     $('#content').html(content);
-    document.getElementById("play_audio").setAttribute("src", play_url);
+    document.getElementById("play_audio").setAttribute("src", audioUrl);
 
     //
     // var canvas = document.getElementById('canvas');
@@ -266,12 +271,14 @@ function initPlayTime() {
 function timeago(dateTimeStamp) {
 
     //dateTimeStamp是一个时间毫秒，注意时间戳是秒的形式，在这个毫秒的基础上除以1000，就是十位数的时间戳。13位数的都是时间毫秒。
+    var second = 1000;      //把分，时，天，周，半个月，一个月用毫秒表示
     var minute = 1000 * 60;      //把分，时，天，周，半个月，一个月用毫秒表示
-    var hour = minutes * 60;
+    var hour = minute * 60;
     var day = hour * 24;
     var week = day * 7;
     var halfamonth = day * 15;
     var month = day * 30;
+    var year = month * 12;
 
     var now = new Date().getTime();   //获取当前时间毫秒
     var diffValue = now - dateTimeStamp; //时间差
@@ -280,29 +287,45 @@ function timeago(dateTimeStamp) {
         return;
     }
 
+    var secondC = diffValue / second;  //计算时间差的分，时，天，周，月
     var minC = diffValue / minute;  //计算时间差的分，时，天，周，月
     var hourC = diffValue / hour;
     var dayC = diffValue / day;
     var weekC = diffValue / week;
     var monthC = diffValue / month;
+    var yearC = diffValue / year;
+    var result;
 
-    if (minC >= 1) {
-        result = " " + parseInt(minC) + "分钟前"
-    }
+    if (yearC >= 1) {
 
-    else if (hourC >= 1) {
-        result = " " + parseInt(hourC) + "小时前"
-    }
-    else if (dayC >= 1) {
-        result = " " + parseInt(dayC) + "天前"
-    }
-    else if (weekC >= 1) {
-        result = " " + parseInt(weekC) + "周前"
-    }
-    else if (monthC >= 1) {
+        result = " " + parseInt(yearC) + "年前"
+
+    } else if (monthC >= 1) {
+
         result = " " + parseInt(monthC) + "月前"
-    }
-    else {
+
+    } else if (weekC >= 1) {
+
+        result = " " + parseInt(weekC) + "周前"
+
+    } else if (dayC >= 1) {
+
+        result = " " + parseInt(dayC) + "天前"
+
+    } else if (hourC >= 1) {
+
+        result = " " + parseInt(hourC) + "小时前"
+
+    } else if (minC >= 1) {
+
+        result = " " + parseInt(minC) + "分钟前"
+
+    } else if (secondC >= 1) {
+
+        result = " " + parseInt(secondC) + "秒钟前"
+
+    } else {
+
         result = "刚刚";
     }
 
