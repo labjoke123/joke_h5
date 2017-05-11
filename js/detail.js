@@ -45,10 +45,6 @@ $(function () {
 
             error: function (result) {
 
-                // var play_url = "http://www.5ijoke.com/xiaohua/frontend/web/uploads/test.mp3";
-                //
-                // setDetail(play_url);
-
                 console.log(result);
             }
         })
@@ -83,21 +79,6 @@ function setDetail(data) {
     $('#speak_num').html("讲过" + speakNum);
     $('#content').html(content);
     document.getElementById("play_audio").setAttribute("src", audioUrl);
-
-    //
-    // var canvas = document.getElementById('canvas');
-    //
-    // if (canvas.getContext) {
-    //     var ctx = canvas.getContext("2d");
-    //     ctx.beginPath();
-    //     ctx.strokeStyle = 'darkgreen';
-    //     ctx.lineCap = 'round';
-    //     ctx.lineWidth = 6;
-    //     ctx.arc(160, 160, 150, 0, Math.PI, false);
-    //     ctx.stroke();
-    // }
-    //
-    // togglePlay();
 }
 
 function doPlay() {
@@ -170,7 +151,6 @@ function doPlayWave() {
         analyser.getByteFrequencyData(data);//得到音频能量值
         var playerTimeDomainData = new Uint8Array(analyser.fftSize);
         analyser.getByteTimeDomainData(playerTimeDomainData);//得到频谱
-        var volumn = Math.max.apply(null, playerTimeDomainData) - Math.min.apply(null, playerTimeDomainData);
         context.clearRect(0, 0, width, height);
 
         drawColumns(data);
@@ -179,8 +159,8 @@ function doPlayWave() {
     function drawColumn() {
 
         var lineHeight;
-        var start = 3;//从X轴何处坐标开始画
         var lineWidth = 3;//柱体宽度
+        var start = 3;//从X轴何处坐标开始画
         var lineGap = 3;//柱体间距
         var dataGap = 5;//每隔多少取一个数据用于绘画，意抽取片段数据来反映整体频谱规律
         var count = parseInt((width - start * 2) / (lineWidth + lineGap));
@@ -189,30 +169,34 @@ function doPlayWave() {
 
         return function (data) {
 
-            initPlayWave();
+            context.beginPath();
+            context.strokeStyle = "#11B7AD";
+            context.moveTo(0, height / 2);
+            context.lineTo(width - 6, height / 2);
 
             for (var i = 0; i < count; i++) {
 
                 thisCap = data[start + i * dataGap];
                 //lineHeight = parseInt(height - (thisCap + thisCap * 0.8));
-                lineHeight = parseInt((height - thisCap + thisCap * 0.5));
+                lineHeight = parseInt((height - thisCap + thisCap * 0.1));
                 context.lineWidth = lineWidth;
                 drawX = start + (lineWidth + lineGap) * i;
 
                 /*画频谱柱条*/
-                context.beginPath();
-                context.strokeStyle = "#11B7AD";
-                context.moveTo(drawX, height / 2);
-                context.lineTo(drawX, lineHeight / 2);
-                //context.stroke();
 
+                // context.moveTo(drawX, height / 2);
+                // context.lineTo(drawX, lineHeight / 2);
+                // context.moveTo(drawX, height / 2);
+                // context.lineTo(drawX, height / 2 + height / 2 - lineHeight / 2);
 
-                // context.beginPath();
-                // context.strokeStyle = "#11B7AD";
                 context.moveTo(drawX, height / 2);
-                context.lineTo(drawX, height / 2 + height / 2 - lineHeight / 2);
-                context.stroke();
+                context.lineTo(drawX, lineHeight);
+                context.moveTo(drawX, height / 2);
+                context.lineTo(drawX, height - lineHeight);
             }
+
+            context.stroke();
+            // context.closePath();
         }
     }
 
@@ -223,7 +207,7 @@ function doPlayWave() {
         drawColumns = drawColumn();
         timer = setInterval(function () {
             getSource()
-        }, 10);
+        }, 1);
     }
 
     init();
@@ -241,7 +225,7 @@ function initPlayWave() {
     context.moveTo(0, height / 2);
     context.lineTo(width - 6, height / 2);
     context.stroke();
-    context.closePath();
+    // context.closePath();
 }
 
 function initPlayTime() {
