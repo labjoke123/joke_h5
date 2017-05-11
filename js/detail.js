@@ -15,7 +15,7 @@ $(function () {
 
     if (id > 0) {
 
-        var requestJson = {"apiVersion": "1", "appId": "2000", "audioId": id};
+        var requestJson = {"apiVersion": "1", "appId": "2000", "userId": "", "audioId": id};
 
         $.ajax({
 
@@ -32,15 +32,9 @@ $(function () {
 
                     // var play_url = "http://www.5ijoke.com/xiaohua/frontend/web/uploads/test.mp3";
 
-                    var url = result.data.audioUrl;
+                    if (data != null) {
 
-                    if (url != null) {
-
-                        var audioUrl = "http://www.5ijoke.com:80/xiaohua/frontend/web/" + url;
-
-                        console.log(audioUrl);
-
-                        setPlayUrl(audioUrl);
+                        setDetail(data);
                     }
 
                     console.log(result);
@@ -51,7 +45,7 @@ $(function () {
 
                 // var play_url = "http://www.5ijoke.com/xiaohua/frontend/web/uploads/test.mp3";
                 //
-                // setPlayUrl(play_url);
+                // setDetail(play_url);
 
                 console.log(result);
             }
@@ -63,23 +57,42 @@ $(function () {
     initPlayTime();
 })
 
-function setPlayUrl(play_url) {
+function setDetail(data) {
 
-    document.getElementById("audio").setAttribute("src", play_url);
+    var avatar = data.portrait;
+    var name = data.userName;
+    var createTime = data.createTime;
+    var playNum = data.playNum;
+    var speakNum = data.speakNum;
+    var content = data.textContent;
+    var url = data.audioUrl;
 
-    var canvas = document.getElementById('canvas');
+    var audioUrl = "http://www.5ijoke.com:80/xiaohua/frontend/web/" + url;
 
-    if (canvas.getContext) {
-        var ctx = canvas.getContext("2d");
-        ctx.beginPath();
-        ctx.strokeStyle = 'darkgreen';
-        ctx.lineCap = 'round';
-        ctx.lineWidth = 6;
-        ctx.arc(160, 160, 150, 0, Math.PI, false);
-        ctx.stroke();
-    }
+    console.log(audioUrl);
 
-    togglePlay();
+    document.getElementById("avatar").setAttribute("src", avatar);
+    $('#name').html(name);
+    $('#data').html(timeago(createTime));
+    $('#play_num').html(playNum);
+    $('#speak_num').html(speakNum);
+    $('#content').html(content);
+    document.getElementById("play_audio").setAttribute("src", play_url);
+
+    //
+    // var canvas = document.getElementById('canvas');
+    //
+    // if (canvas.getContext) {
+    //     var ctx = canvas.getContext("2d");
+    //     ctx.beginPath();
+    //     ctx.strokeStyle = 'darkgreen';
+    //     ctx.lineCap = 'round';
+    //     ctx.lineWidth = 6;
+    //     ctx.arc(160, 160, 150, 0, Math.PI, false);
+    //     ctx.stroke();
+    // }
+    //
+    // togglePlay();
 }
 
 function doPlay() {
@@ -106,7 +119,7 @@ function doPlay() {
     }, false);
 
     function playPause() {
-        
+
         if (playAudio.paused) {
             playAudio.play();
             btnPlay.setAttribute("src", "../images/icon_pause.png");
@@ -248,4 +261,50 @@ function initPlayTime() {
         $('#play_time').html(formatDuration);
 
     }, false);
+}
+
+function timeago(dateTimeStamp) {
+
+    //dateTimeStamp是一个时间毫秒，注意时间戳是秒的形式，在这个毫秒的基础上除以1000，就是十位数的时间戳。13位数的都是时间毫秒。
+    var minute = 1000 * 60;      //把分，时，天，周，半个月，一个月用毫秒表示
+    var hour = minutes * 60;
+    var day = hour * 24;
+    var week = day * 7;
+    var halfamonth = day * 15;
+    var month = day * 30;
+
+    var now = new Date().getTime();   //获取当前时间毫秒
+    var diffValue = now - dateTimeStamp; //时间差
+
+    if (diffValue < 0) {
+        return;
+    }
+
+    var minC = diffValue / minute;  //计算时间差的分，时，天，周，月
+    var hourC = diffValue / hour;
+    var dayC = diffValue / day;
+    var weekC = diffValue / week;
+    var monthC = diffValue / month;
+
+    if (minC >= 1) {
+        result = " " + parseInt(minC) + "分钟前"
+    }
+
+    else if (hourC >= 1) {
+        result = " " + parseInt(hourC) + "小时前"
+    }
+    else if (dayC >= 1) {
+        result = " " + parseInt(dayC) + "天前"
+    }
+    else if (weekC >= 1) {
+        result = " " + parseInt(weekC) + "周前"
+    }
+    else if (monthC >= 1) {
+        result = " " + parseInt(monthC) + "月前"
+    }
+    else {
+        result = "刚刚";
+    }
+
+    return result;
 }

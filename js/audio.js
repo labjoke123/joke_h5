@@ -51,7 +51,7 @@ $(function () {
 
                 // var play_url = "http://www.5ijoke.com/xiaohua/frontend/web/uploads/test.mp3";
                 //
-                // setPlayUrl(play_url);
+                // setDetail(play_url);
 
                 console.log(result);
             }

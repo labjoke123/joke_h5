@@ -104,6 +104,7 @@ body {
     -moz-box-orient: horizontal;
     -webkit-box-orient: horizontal;
     box-flex: 1;
+    margin-left: 8px;
     height: 25px;
 }
 
@@ -140,7 +141,7 @@ body {
     -moz-box-orient: horizontal;
     -webkit-box-orient: horizontal;
     height: 24px;
-    margin-left: 20px;
+    margin-left: 12px;
     font-size: 14px;
     text-align: left;
     line-height: 25px;
@@ -212,7 +213,7 @@ body {
 
 #play_wave {
 
-    width: 280px;
+    width: 270px;
     height: 46px;
 }
 
@@ -223,6 +224,7 @@ body {
     color: #7b7b7d;
     height: 46px;
     line-height: 46px;
+    overflow: hidden;
 }
 
 .div-horizontal {
