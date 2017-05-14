@@ -92,6 +92,7 @@ function doPlay() {
     playAudio.addEventListener('ended', function () {
 
         btnPlay.setAttribute("src", "../images/icon_play.png");
+        initPlayWave();
 
     }, false);
 
