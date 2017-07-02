@@ -15,9 +15,14 @@
 
         window.onload = function () {
 
-            initPlayWave();
+            // initPlayWave();
 
-            initPlayTime();
+            // initPlayTime();
+        }
+
+        window.unonload = function () {
+
+            playPause();
         }
 
     </script>
@@ -48,7 +53,7 @@
 
                 <div id="name_container">
 
-                    <div id="name">姓名</div>
+                    <div id="name">姓名罗凯文小朋友</div>
                     <div id="date">1月前</div>
 
                 </div>
@@ -97,8 +102,8 @@
         <!--您的浏览器不支持canvas，请更换高级版的浏览器！-->
     <!--</audio>-->
 
-    <audio id="play_1" controls="controls">
-        <source src="../music/tpjh.mp3" type="audio/mpeg">
+    <audio id="play_audio" controls="controls">
+        <source src="" type="audio/mpeg">
     </audio>
 
 </div>

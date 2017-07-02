@@ -104,6 +104,7 @@ body {
     -moz-box-orient: horizontal;
     -webkit-box-orient: horizontal;
     box-flex: 1;
+    width: 50%;
     margin-left: 8px;
     height: 25px;
 }
@@ -114,6 +115,7 @@ body {
     box-flex: 1;
     margin-top: 2px;
     text-align: right;
+    width: 50%;
     font-size: 12px;
     height: 25px;
 }
@@ -197,8 +199,8 @@ body {
 
 #play_audio {
 
-    width: 0px;
-    height: 0px;
+    width: 330px;
+    height: 48px;
 }
 
 audio::-internal-media-controls-download-button {

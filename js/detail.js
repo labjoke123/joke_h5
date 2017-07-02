@@ -50,9 +50,9 @@ $(function () {
         })
     }
 
-    initPlayWave();
+    // initPlayWave();
 
-    initPlayTime();
+    // initPlayTime();
 })
 
 function setDetail(data) {
@@ -64,6 +64,10 @@ function setDetail(data) {
     var speakNum = data.speakNum;
     var content = data.textContent;
     var url = data.audioUrl;
+
+    if (typeof(speakNum) == "undefined") {
+        speakNum = '0';
+    }
 
     console.log("avatar:" + avatar);
     console.log("content:" + content);
@@ -123,95 +127,101 @@ function doPlay() {
     doPlayWave();
 }
 
+function playPause() {
+
+    var playAudio = document.getElementById("play_audio");
+    playAudio.pause();
+}
+
 function doPlayWave() {
 
-    var canvas = document.querySelector("#play_wave"), context = canvas.getContext('2d');
-    var width = canvas.width, height = canvas.height;
-    var audio = document.querySelector("#play_audio");
-
-    window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.msAudioContext;
-
-    try {
-        var audioContext = new window.AudioContext();
-    } catch (e) {
-        throw new Error("您的浏览器不支持！");
-    }
-
-    var analyser = audioContext.createAnalyser();
-    var source = audioContext.createMediaElementSource(audio);
-
-    source.connect(analyser);//截取音频信号
-    analyser.connect(audioContext.destination);//声音连接到扬声器
-
-    function getSource() {
-
-        if (audio.paused) {
-            return false;
-        }
-        var data = new Uint8Array(analyser.frequencyBinCount);
-        analyser.getByteFrequencyData(data);//得到音频能量值
-        var playerTimeDomainData = new Uint8Array(analyser.fftSize);
-        analyser.getByteTimeDomainData(playerTimeDomainData);//得到频谱
-        context.clearRect(0, 0, width, height);
-
-        drawColumns(data);
-    }
-
-    function drawColumn() {
-
-        var lineHeight;
-        var lineWidth = 3;//柱体宽度
-        var start = 3;//从X轴何处坐标开始画
-        var lineGap = 3;//柱体间距
-        var dataGap = 5;//每隔多少取一个数据用于绘画，意抽取片段数据来反映整体频谱规律
-        var count = parseInt((width - start * 2) / (lineWidth + lineGap));
-        var thisCap;
-        var drawX;
-
-        return function (data) {
-
-            context.beginPath();
-            context.strokeStyle = "#11B7AD";
-            context.moveTo(0, height / 2);
-            context.lineTo(width - 6, height / 2);
-
-            for (var i = 0; i < count; i++) {
-
-                thisCap = data[start + i * dataGap];
-                //lineHeight = parseInt(height - (thisCap + thisCap * 0.8));
-                lineHeight = parseInt((height - thisCap + thisCap * 0.1));
-                context.lineWidth = lineWidth;
-                drawX = start + (lineWidth + lineGap) * i;
-
-                /*画频谱柱条*/
-
-                // context.moveTo(drawX, height / 2);
-                // context.lineTo(drawX, lineHeight / 2);
-                // context.moveTo(drawX, height / 2);
-                // context.lineTo(drawX, height / 2 + height / 2 - lineHeight / 2);
-
-                context.moveTo(drawX, height / 2);
-                context.lineTo(drawX, lineHeight);
-                context.moveTo(drawX, height / 2);
-                context.lineTo(drawX, height - lineHeight);
-            }
-
-            context.stroke();
-            // context.closePath();
-        }
-    }
-
-    var drawColumns;
-    var timer;
-
-    function init() {
-        drawColumns = drawColumn();
-        timer = setInterval(function () {
-            getSource()
-        }, 1);
-    }
-
-    init();
+    // var canvas = document.querySelector("#play_wave"), context = canvas.getContext('2d');
+    // var width = canvas.width, height = canvas.height;
+    // var audio = document.querySelector("#play_audio");
+    //
+    // window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.msAudioContext;
+    //
+    // try {
+    //     var audioContext = new window.AudioContext();
+    // } catch (e) {
+    //     throw new Error("您的浏览器不支持！");
+    // }
+    //
+    // var analyser = audioContext.createAnalyser();
+    // var source = audioContext.createMediaElementSource(audio);
+    //
+    // source.connect(analyser);//截取音频信号
+    // analyser.connect(audioContext.destination);//声音连接到扬声器
+    //
+    // function getSource() {
+    //
+    //     if (audio.paused) {
+    //         return false;
+    //     }
+    //     var data = new Uint8Array(analyser.frequencyBinCount);
+    //     analyser.getByteFrequencyData(data);//得到音频能量值
+    //     var playerTimeDomainData = new Uint8Array(analyser.fftSize);
+    //     analyser.getByteTimeDomainData(playerTimeDomainData);//得到频谱
+    //     context.clearRect(0, 0, width, height);
+    //
+    //     drawColumns(data);
+    // }
+    //
+    // function drawColumn() {
+    //
+    //     var lineHeight;
+    //     var lineWidth = 3;//柱体宽度
+    //     var start = 3;//从X轴何处坐标开始画
+    //     var lineGap = 3;//柱体间距
+    //     var dataGap = 5;//每隔多少取一个数据用于绘画，意抽取片段数据来反映整体频谱规律
+    //     var count = parseInt((width - start * 2) / (lineWidth + lineGap));
+    //     var thisCap;
+    //     var drawX;
+    //
+    //     return function (data) {
+    //
+    //         context.beginPath();
+    //         context.strokeStyle = "#11B7AD";
+    //         context.moveTo(0, height / 2);
+    //         context.lineTo(width - 6, height / 2);
+    //
+    //         for (var i = 0; i < count; i++) {
+    //
+    //             thisCap = data[start + i * dataGap];
+    //             //lineHeight = parseInt(height - (thisCap + thisCap * 0.8));
+    //             lineHeight = parseInt((height - thisCap + thisCap * 0.1));
+    //             context.lineWidth = lineWidth;
+    //             drawX = start + (lineWidth + lineGap) * i;
+    //
+    //             /*画频谱柱条*/
+    //
+    //             // context.moveTo(drawX, height / 2);
+    //             // context.lineTo(drawX, lineHeight / 2);
+    //             // context.moveTo(drawX, height / 2);
+    //             // context.lineTo(drawX, height / 2 + height / 2 - lineHeight / 2);
+    //
+    //             context.moveTo(drawX, height / 2);
+    //             context.lineTo(drawX, lineHeight);
+    //             context.moveTo(drawX, height / 2);
+    //             context.lineTo(drawX, height - lineHeight);
+    //         }
+    //
+    //         context.stroke();
+    //         // context.closePath();
+    //     }
+    // }
+    //
+    // var drawColumns;
+    // var timer;
+    //
+    // function init() {
+    //     drawColumns = drawColumn();
+    //     timer = setInterval(function () {
+    //         getSource()
+    //     }, 1);
+    // }
+    //
+    // init();
 }
 
 function initPlayWave() {
