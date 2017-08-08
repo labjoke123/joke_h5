@@ -82,21 +82,24 @@ function setDetail(data) {
     $('#play_num').html("播放" + playNum);
     $('#speak_num').html("讲过" + speakNum);
     $('#content').html(content);
-    document.getElementById("play_audio").setAttribute("src", audioUrl);
+    var playAudio = document.getElementById("play_audio");
+    playAudio.setAttribute("src", audioUrl);
+    playAudio.loop = false;
+    playAudio.play();
 }
 
 function doPlay() {
 
-    var btnPlay = document.getElementById("btn_play");
+    // var btnPlay = document.getElementById("btn_play");
     var playAudio = document.getElementById("play_audio");
 
-    btnPlay.setAttribute("src", "../images/icon_play.png");
+    // btnPlay.setAttribute("src", "../images/icon_play.png");
 
     playAudio.loop = false;
     playAudio.addEventListener('ended', function () {
 
-        btnPlay.setAttribute("src", "../images/icon_play.png");
-        initPlayWave();
+        // btnPlay.setAttribute("src", "../images/icon_play.png");
+        // initPlayWave();
 
     }, false);
 
@@ -113,18 +116,18 @@ function doPlay() {
 
         if (playAudio.paused) {
             playAudio.play();
-            btnPlay.setAttribute("src", "../images/icon_pause.png");
+            // btnPlay.setAttribute("src", "../images/icon_pause.png");
             doPlayWave();
         } else {
             playAudio.pause();
-            btnPlay.setAttribute("src", "../images/icon_play.png");
+            // btnPlay.setAttribute("src", "../images/icon_play.png");
             initPlayWave();
         }
     }
 
     playPause();
 
-    doPlayWave();
+    // doPlayWave();
 }
 
 function playPause() {
