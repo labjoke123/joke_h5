@@ -204,11 +204,11 @@ body {
 }
 
 audio::-internal-media-controls-download-button {
-    display:none;
+    display: none;
 }
 
 audio::-webkit-media-controls-enclosure {
-    overflow:hidden;
+    overflow: hidden;
 }
 
 audio::-webkit-media-controls-panel {
@@ -228,6 +228,12 @@ audio::-webkit-media-controls-panel {
 
     width: 270px;
     height: 46px;
+}
+
+#qr_code {
+
+    /*width: 80%;*/
+    margin-top: 6%;
 }
 
 #play_time {
