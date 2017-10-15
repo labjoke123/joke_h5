@@ -162,6 +162,14 @@ body {
     background: white;
 }
 
+.container_help {
+
+    width: auto;
+    height: 100%;
+    padding: 4%;
+    background: white;
+}
+
 #content {
 
     width: auto;
