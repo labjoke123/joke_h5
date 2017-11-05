@@ -57,7 +57,7 @@ $(function () {
 
         title.onclick = function () {
 
-            window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.lzqz.idouxiao";
+            window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.lzqz.idouxiao";
         }
     }
 
@@ -96,8 +96,13 @@ function setDetail(data) {
     $('#speak_num').html("讲过" + speakNum);
     $('#content').html(content);
     var playAudio = document.getElementById("play_audio");
-    playAudio.setAttribute("src", audioUrl);
+    playAudio.src = audioUrl;
     playAudio.loop = false;
+    playAudio.addEventListener('ended', function () {
+
+        playAudio.load();
+
+    }, false);
     playAudio.play();
 }
 
@@ -111,8 +116,7 @@ function doPlay() {
     playAudio.loop = false;
     playAudio.addEventListener('ended', function () {
 
-        // btnPlay.setAttribute("src", "../images/icon_play.png");
-        // initPlayWave();
+        playAudio.load();
 
     }, false);
 
